@@ -3,11 +3,15 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import Clock from './Clock.js';
+import ControlPanel from './addon/ControlPanel.js';
+import TabHandler from './addon/TabHandler.js';
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
   <React.StrictMode>
         <Clock />,
+        <TabHandler />,
+        <ControlPanel />,
         <App />
   </React.StrictMode>,
   document.getElementById('root')
