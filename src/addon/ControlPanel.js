@@ -63,9 +63,9 @@ class ControlPanel extends React.Component {
     }
 
     handleSaveDomain() {
-        var domain = this.state.entry
-        if(domain.trim() != "") {
-            this.state.domains.push()
+        var domain = this.state.entry.trim()
+        if(domain !== "") {
+            this.state.domains.push(domain)
             this.saveInStorage(this.state.domains)
             this.forceUpdate();
         }

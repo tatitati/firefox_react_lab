@@ -9,7 +9,7 @@ const themes = {
 browser.tabs.onHighlighted.addListener(event => update(event.tabIds[0]));
 browser.tabs.onUpdated.addListener(tabId => update(tabId));
 
-var currentTheme = null;
+var originalTheme = null;
 
 async function update(tabId) {
     let tab = await browser.tabs.get(tabId);
@@ -18,8 +18,11 @@ async function update(tabId) {
         let windowId = tab.windowId;
         var urlTab = tab.url;
 
-        if (currentTheme == null) {
-            currentTheme = await browser.theme.getCurrent();
+        if (originalTheme == null) {
+            current = await browser.theme.getCurrent();
+            if (current.colors.frame != "#CD3333") {
+                originalTheme = current
+            }
         }
 
         var storedDomains = []
@@ -40,7 +43,7 @@ async function update(tabId) {
             if (isLiveTab) {
                 browser.theme.update(windowId, themes.live);
             } else {
-                browser.theme.update(windowId, currentTheme);
+                browser.theme.update(windowId, originalTheme);
             }
         });
 
