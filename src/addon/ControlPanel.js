@@ -17,9 +17,19 @@ class ControlPanel extends React.Component {
     renderDomains() {
         return this.state.domains.map((domain, index) =>
             <li key={index}>
-                <button onClick={this.handleRemoveDomain}>Delete</button> {domain}
+                <button onClick={() => this.handleRemoveDomain(domain, index)}>
+                    Delete
+                </button>
+
+                {domain}
             </li>
         );
+    }
+
+    handleRemoveDomain(domain, index) {
+        console.log('deleting domain.....');
+        this.state.domains.splice(index, 1);
+        this.forceUpdate();
     }
 
     handlChangeDomain(e) {
@@ -31,11 +41,6 @@ class ControlPanel extends React.Component {
         console.log('saving domain...');
         this.state.domains.push(this.state.entry)
         this.forceUpdate();
-    }
-
-    handleRemoveDomain() {
-        // this.setState({isLoggedIn: true});
-        console.log('removing domain...');
     }
 
 
