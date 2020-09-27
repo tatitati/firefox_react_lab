@@ -6,12 +6,11 @@ import Clock from './Clock.js';
 import ControlPanel from './addon/ControlPanel.js';
 import * as serviceWorker from './serviceWorker';
 
+console.log("this is index.js");
 
 ReactDOM.render(
   <React.StrictMode>
-        {/*<Clock />,*/}
-        <ControlPanel />,
-        {/*<App />*/}
+        <ControlPanel />
   </React.StrictMode>,
   document.getElementById('root')
 );

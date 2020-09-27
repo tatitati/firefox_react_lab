@@ -4,6 +4,10 @@
       "id": "francis.jaa@tuta.io"
     }
   },
+  "icons": {
+    "192": "icon3.png",
+    "512": "icon3.png"
+  },
   "short_name": "Tab shout",
   "name": "Tab shout",
   "manifest_version": 2,
@@ -16,5 +20,5 @@
     "scripts": ["redify.js"]
   },
   "permissions": ["theme", "tabs", "storage"],
-  "version": "1.0"
+  "version": "1.6"
 }
