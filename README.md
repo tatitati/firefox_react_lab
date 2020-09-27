@@ -8,7 +8,7 @@ To build, sign, publish and install locally:
 ```
 cd public
 web-ext build
-- Upload the zip to developer hub
+- Upload the zip to developer hub from public/....<version>.zip
 web-ext sign --api-key=$issuer --api-secret=$secret
 ```
 
