@@ -6,8 +6,9 @@ npm run start
 
 To build, sign, publish and install locally:
 ```
-npm run-script build
 cd public
+web-ext build
+- Upload the zip to developer hub
 web-ext sign --api-key=$issuer --api-secret=$secret
 ```
 
