@@ -9,10 +9,10 @@ import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
   <React.StrictMode>
-        <Clock />,
-        <TabHandler />,
+        {/*<Clock />,*/}
+        {/*<TabHandler />,*/}
         <ControlPanel />,
-        <App />
+        {/*<App />*/}
   </React.StrictMode>,
   document.getElementById('root')
 );
