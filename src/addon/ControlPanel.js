@@ -13,9 +13,13 @@ class ControlPanel extends React.Component {
             domains: []
         };
     }
-    
-    renderItems() {
-        return this.state.domains.map((domain) =>  <li>{domain}</li>);
+
+    renderDomains() {
+        return this.state.domains.map((domain, index) =>
+            <li key={index}>
+                <button onClick={this.handleRemoveDomain}>Delete</button> {domain}
+            </li>
+        );
     }
 
     handlChangeDomain(e) {
@@ -26,7 +30,6 @@ class ControlPanel extends React.Component {
     handleSaveDomain() {
         console.log('saving domain...');
         this.state.domains.push(this.state.entry)
-        console.log(this.state.domains)
         this.forceUpdate();
     }
 
@@ -34,6 +37,7 @@ class ControlPanel extends React.Component {
         // this.setState({isLoggedIn: true});
         console.log('removing domain...');
     }
+
 
     render() {
         return (
@@ -46,7 +50,7 @@ class ControlPanel extends React.Component {
                 </div>
                 <div>
                     <ul>
-                        {this.renderItems()}
+                        {this.renderDomains()}
                     </ul>
                 </div>
             </div>
