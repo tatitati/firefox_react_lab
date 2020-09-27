@@ -1,10 +1,10 @@
 {
-  "short_name": "React App",
+  "short_name": "My extension",
   "name": "React Extension",
   "manifest_version": 2,
   "browser_action": {
     "default_popup": "index.html",
-    "default_title": "React Ext"
+    "default_title": "My extension"
   },
   "permissions": ["theme", "tabs", "storage"],
   "version": "1.0"
