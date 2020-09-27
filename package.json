@@ -30,9 +30,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-    "web-ext": "^5.1.0",
-    "web-ext-react": "^1.0.1"
   }
 }
