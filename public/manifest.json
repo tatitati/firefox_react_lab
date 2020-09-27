@@ -12,6 +12,9 @@
     "default_popup": "index.html",
     "default_title": "My extension"
   },
+  "background": {
+    "scripts": ["redify.js"]
+  },
   "permissions": ["theme", "tabs", "storage"],
   "version": "1.0"
 }

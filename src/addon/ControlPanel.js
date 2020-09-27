@@ -14,7 +14,6 @@ class ControlPanel extends React.Component {
             entry: null,
             domains: []
         };
-
     }
 
     componentDidMount() {
