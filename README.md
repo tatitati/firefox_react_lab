@@ -1,7 +1,12 @@
-To build, sign, publish and install locally:
-
+To test locally:
 ```
-yarn build
+npm install
+npm run start
+```
+
+To build, sign, publish and install locally:
+```
+npm run-script build
 cd public
 web-ext sign --api-key=$issuer --api-secret=$secret
 ```
