@@ -20,5 +20,5 @@
     "scripts": ["redify.js"]
   },
   "permissions": ["theme", "tabs", "storage"],
-  "version": "1.8"
+  "version": "2.0"
 }

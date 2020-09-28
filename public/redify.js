@@ -20,7 +20,7 @@ async function update(tabId) {
 
         if (originalTheme == null) {
             current = await browser.theme.getCurrent();
-            if (current.colors.frame != "#CD3333") {
+            if (current != themes.live) {
                 originalTheme = current
             }
         }
@@ -30,8 +30,6 @@ async function update(tabId) {
             if ('domains' in result) {
                 storedDomains = result.domains
             }
-
-            console.log(storedDomains)
 
             var isLiveTab = false
             storedDomains.forEach(function (storedDomain) {
@@ -43,14 +41,10 @@ async function update(tabId) {
             if (isLiveTab) {
                 browser.theme.update(windowId, themes.live);
             } else {
+                delete originalTheme.images // problem with images when restoring
                 browser.theme.update(windowId, originalTheme);
             }
         });
-
-
-
-
-
     }
 }
   
