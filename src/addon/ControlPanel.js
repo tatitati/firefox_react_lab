@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import ServiceStorage from "./ServiceStorage";
 
 /* global browser */
 
@@ -9,6 +10,7 @@ class ControlPanel extends React.Component {
         this.handleSaveDomain = this.handleSaveDomain.bind(this);
         this.handleRemoveDomain = this.handleRemoveDomain.bind(this);
         this.handlChangeDomain = this.handlChangeDomain.bind(this);
+        this.serviceStorage = new ServiceStorage()
         this.state = {
             date: new Date(),
             entry: null,
@@ -17,7 +19,7 @@ class ControlPanel extends React.Component {
     }
 
     componentDidMount() {
-        this.readFromStorage()
+        this.readDomainsToHighlightFromStorage()
         this.forceUpdate()
     }
 
@@ -33,12 +35,12 @@ class ControlPanel extends React.Component {
         );
     }
 
-    readFromStorage(){
+    readDomainsToHighlightFromStorage(){
         if (typeof browser !== 'undefined') {
             var that = this
-            browser.storage.sync.get(['domains'], function(result) {
-                if('domains' in result){
-                    that.setState({ domains: result.domains })
+            browser.storage.sync.get(['domains'], function(domainsInStorage) {
+                if('domains' in domainsInStorage){
+                    that.setState({ domains: domainsInStorage.domains })
                 }
             });
         }
@@ -49,7 +51,7 @@ class ControlPanel extends React.Component {
             browser.storage.sync.set({"domains": domains});
         }
 
-        this.readFromStorage()
+        this.readDomainsToHighlightFromStorage()
     }
 
     handleRemoveDomain(domain, index) {

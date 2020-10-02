@@ -6,12 +6,12 @@ const themes = {
     }
 };
 
-browser.tabs.onHighlighted.addListener(event => update(event.tabIds[0]));
-browser.tabs.onUpdated.addListener(tabId => update(tabId));
+browser.tabs.onHighlighted.addListener(event => handleThemeTab(event.tabIds[0]));
+browser.tabs.onUpdated.addListener(tabId => handleThemeTab(tabId));
 
 var originalTheme = null;
 
-async function update(tabId) {
+async function handleThemeTab(tabId) {
     let tab = await browser.tabs.get(tabId);
 
     if (tab.active == true && tab.highlighted == true) {
