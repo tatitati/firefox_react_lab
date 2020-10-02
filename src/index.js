@@ -5,6 +5,8 @@ import App from './App';
 import Clock from './Clock.js';
 import ControlPanel from './addon/ControlPanel.js';
 import * as serviceWorker from './serviceWorker';
+import './index.css';
+import './css/tailwind.css';
 
 ReactDOM.render(
   <React.StrictMode>

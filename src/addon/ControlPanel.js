@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import ServiceStorage from "./ServiceStorage";
 
 /* global browser */
 
@@ -10,7 +9,6 @@ class ControlPanel extends React.Component {
         this.handleSaveDomain = this.handleSaveDomain.bind(this);
         this.handleRemoveDomain = this.handleRemoveDomain.bind(this);
         this.handlChangeDomain = this.handlChangeDomain.bind(this);
-        this.serviceStorage = new ServiceStorage()
         this.state = {
             date: new Date(),
             entry: null,
