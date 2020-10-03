@@ -6,7 +6,7 @@ const themes = {
     }
 };
 
-browser.tabs.onHighlighted.addListener(event => handleHighlightedTab(event.tabIds[0]));
+browser.tabs.onUpdated.addListener(handleUpdatedTab);
 
 var originalTheme = null;
 
@@ -45,14 +45,39 @@ function updateTheme(windowId, isLive){
     }
 }
 
-async function handleHighlightedTab(tabId) {
-    let tab = await browser.tabs.get(tabId);
+async function reopentTabInLiveContainerIfNeeded(windowid, tab, isChangeToLive){
+    if(isChangeToLive && tab.cookieStoreId != "firefox-container-6") {
+        await browser.tabs.remove(tab.id)
+        await browser.tabs.create({
+            cookieStoreId: "firefox-container-6",
+            url: tab.url,
+            index: tab.index
+        })
+    } else if(!isChangeToLive && tab.cookieStoreId == "firefox-container-6"){
+        await browser.tabs.remove(tab.id)
+        await browser.tabs.create({
+            cookieStoreId: "firefox-default",
+            url: tab.url,
+            index: tab.index
+        })
+    }
+}
 
+async function handleUpdatedTab(tabId, changeInfo, tab) {
     let windowId = tab.windowId;
 
     await readOriginalTheme()
-    let isLiveTab = await checkIfLive(tab.url)
-    updateTheme(windowId, isLiveTab)
+
+    if (changeInfo.hasOwnProperty('url')) {
+        let isChangeToLive = await checkIfLive(changeInfo.url)
+        await reopentTabInLiveContainerIfNeeded(windowId, tab, isChangeToLive)
+        updateTheme(windowId, isChangeToLive)
+    } else {
+        let isLiveTab = await checkIfLive(tab.url)
+        updateTheme(windowId, isLiveTab)
+    }
+
+
 }
 
 // async function handleUpdated(tabId, changeInfo, tab) {
