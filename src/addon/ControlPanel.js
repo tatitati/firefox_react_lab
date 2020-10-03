@@ -64,7 +64,7 @@ class ControlPanel extends React.Component {
     renderDomains() {
         return this.state.domains.map((domain, index) =>
             <li key={index} class="block p-3 hover:bg-red-100">
-                <button class="bg-red-200 hover:bg-red-500 py-2 px-4 mx-2" onClick={() => this.handleRemoveDomain(domain, index)}>X</button>
+                <button class="bg-red-200 hover:bg-red-500 hover:text-white text-red-500 font-bold py-2 px-4 mx-2" onClick={() => this.handleRemoveDomain(domain, index)}>X</button>
                 <span>{domain}</span>
             </li>
         );
@@ -73,9 +73,9 @@ class ControlPanel extends React.Component {
     render() {
         return (
             <div class="container">
-                <div class="block bg-gray-400 p-3">
-                    <button class="bg-blue-200 hover:bg-blue-500 py-2 px-4 mx-2" onClick={this.handleSaveDomain}>Add domain</button>
-                    <input type="text" class="py-2 px-4 mx-2" onChange={this.handlChangeDomain}/>
+                <div class="flex mb-4 bg-gray-400 p-3">
+                    <button class="w-1/5 bg-blue-200 hover:text-white border border-blue-300 hover:bg-blue-500 py-2 px-4 mx-2" onClick={this.handleSaveDomain}>Add domain</button>
+                    <input type="text" class="w-4/5 py-2 px-4 mx-2" onChange={this.handlChangeDomain}/>
                 </div>
                 <div class="block p-3">
                     <ul>{this.renderDomains()}</ul>
