@@ -63,20 +63,29 @@ async function reopentTabInLiveContainerIfNeeded(windowid, tab, isChangeToLive){
     }
 }
 
+// async function handleUpdatedTab(tabId, changeInfo, tab) {
+//     let windowId = tab.windowId;
+//
+//     await readOriginalTheme()
+//
+//     if (changeInfo.hasOwnProperty('url')) {
+//         let isChangeToLive = await checkIfLive(changeInfo.url)
+//         await reopentTabInLiveContainerIfNeeded(windowId, tab, isChangeToLive)
+//         updateTheme(windowId, isChangeToLive)
+//     } else {
+//         let isLiveTab = await checkIfLive(tab.url)
+//         updateTheme(windowId, isLiveTab)
+//     }
+//
+//
+// }
+
 async function handleUpdatedTab(tabId, changeInfo, tab) {
     let windowId = tab.windowId;
 
     await readOriginalTheme()
-
-    if (changeInfo.hasOwnProperty('url')) {
-        let isChangeToLive = await checkIfLive(changeInfo.url)
-        await reopentTabInLiveContainerIfNeeded(windowId, tab, isChangeToLive)
-        updateTheme(windowId, isChangeToLive)
-    } else {
-        let isLiveTab = await checkIfLive(tab.url)
-        updateTheme(windowId, isLiveTab)
-    }
-
-
+    
+    let isLiveTab = await checkIfLive(tab.url)
+    updateTheme(windowId, isLiveTab)
 }
   
