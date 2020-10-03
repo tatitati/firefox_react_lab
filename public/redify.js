@@ -79,46 +79,4 @@ async function handleUpdatedTab(tabId, changeInfo, tab) {
 
 
 }
-
-// async function handleUpdated(tabId, changeInfo, tab) {
-//     if (changeInfo.hasOwnProperty('url')) {
-//         let windowId = tab.windowId;
-//
-//         readOriginalTheme()
-//
-//         browser.storage.sync.get(['domains'], function (result) {
-//             if ('domains' in result) {
-//                 storedDomains = result.domains
-//             }
-//
-//             isLiveTab = false;
-//             if(tab.cookieStoreId != "firefox-container-6"){
-//                 storedDomains.forEach(function (storedDomain) {
-//                     if (tab.url.includes(storedDomain)) {
-//                         isLiveTab = true;
-//                     }
-//                 })
-//
-//                 if (isLiveTab) {
-//                     browser.tabs.remove(tab.id).then(function(){
-//                         browser.tabs.create(
-//                             {
-//                                 cookieStoreId: "firefox-container-6",
-//                                 url: tab.url
-//                             }
-//                         )
-//
-//                         console.log("upadting theme...")
-//                         browser.theme.update(windowId, themes.live);
-//                     })
-//
-//                 } else {
-//                     delete originalTheme.images // problem with images when restoring
-//                     browser.theme.update(windowId, originalTheme);
-//                 }
-//             }
-//         });
-//     }
-// };
-
   
