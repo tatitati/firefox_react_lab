@@ -6,8 +6,7 @@ const themes = {
     }
 };
 
-browser.tabs.onHighlighted.addListener(event => handleThemeTab(event.tabIds[0]));
-browser.tabs.onUpdated.addListener(tabId => handleThemeTab(tabId));
+browser.tabs.onHighlighted.addListener(event => handleHighlightedTab(event.tabIds[0]));
 
 var originalTheme = null;
 
@@ -46,16 +45,14 @@ function updateTheme(windowId, isLive){
     }
 }
 
-async function handleThemeTab(tabId) {
+async function handleHighlightedTab(tabId) {
     let tab = await browser.tabs.get(tabId);
 
-    if (tab.active == true && tab.highlighted == true) {
-        let windowId = tab.windowId;
+    let windowId = tab.windowId;
 
-        await readOriginalTheme()
-        let isLiveTab = await checkIfLive(tab.url)
-        updateTheme(windowId, isLiveTab)
-    }
+    await readOriginalTheme()
+    let isLiveTab = await checkIfLive(tab.url)
+    updateTheme(windowId, isLiveTab)
 }
 
 // async function handleUpdated(tabId, changeInfo, tab) {
