@@ -37,6 +37,15 @@ async function checkIfLive(urlTab){
     return isLiveTab
 }
 
+function updateTheme(windowId, isLive){
+    if (isLive) {
+        browser.theme.update(windowId, themes.live);
+    } else {
+        delete originalTheme.images // problem with images when restoring
+        browser.theme.update(windowId, originalTheme);
+    }
+}
+
 async function handleThemeTab(tabId) {
     let tab = await browser.tabs.get(tabId);
 
@@ -45,13 +54,7 @@ async function handleThemeTab(tabId) {
 
         await readOriginalTheme()
         let isLiveTab = await checkIfLive(tab.url)
-
-        if (isLiveTab) {
-            browser.theme.update(windowId, themes.live);
-        } else {
-            delete originalTheme.images // problem with images when restoring
-            browser.theme.update(windowId, originalTheme);
-        }
+        updateTheme(windowId, isLiveTab)
     }
 }
 
