@@ -1,8 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
-import Clock from './Clock.js';
 import ControlPanel from './addon/ControlPanel.js';
 import * as serviceWorker from './serviceWorker';
 import './index.css';
