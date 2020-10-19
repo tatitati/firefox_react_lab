@@ -76,8 +76,6 @@ async function reopentTabInLiveContainerIfNeeded(windowid, tab, isChangeToLive){
 //         let isLiveTab = await checkIfLive(tab.url)
 //         updateTheme(windowId, isLiveTab)
 //     }
-//
-//
 // }
 
 async function handleUpdatedTab(tabId, changeInfo, tab) {

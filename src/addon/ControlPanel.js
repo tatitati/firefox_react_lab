@@ -61,12 +61,21 @@ class ControlPanel extends React.Component {
     }
 
     renderDomains() {
-        return this.state.domains.map((domain, index) =>
-            <li key={index} class="block p-3 hover:bg-red-100">
-                <button class="bg-red-200 hover:bg-red-500 hover:text-white text-red-500 font-bold py-2 px-4 mx-2" onClick={() => this.handleRemoveDomain(domain, index)}>X</button>
-                <span>{domain}</span>
-            </li>
-        );
+        if(this.state.domains.length != 0) {
+            return this.state.domains.map((domain, index) =>
+                <li key={index} class="block p-3 hover:bg-red-100">
+                    <button class="bg-red-200 hover:bg-red-500 hover:text-white text-red-500 font-bold py-2 px-4 mx-2" onClick={() => this.handleRemoveDomain(domain, index)}>X</button>
+                    <span>{domain}</span>
+                </li>
+            );
+        } else {
+            return (
+                <p>
+                    Seems that you still didn't add any domain.
+                    You can add domains or substrings to identify your live domains.
+                </p>
+            )
+        }
     }
 
     render() {
